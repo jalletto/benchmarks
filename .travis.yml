@@ -1,0 +1,44 @@
+services:
+  - docker
+
+jobs:
+  include:
+    - stage: build
+      script: docker build docker/ -t benchmarks
+    - stage: run
+      script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+
+
+
+
+
+# language: c
+
+# compiler:
+#   - gcc
+
+# jobs:
+#   include:
+#     - stage: test
+#       addons:
+#         apt:
+#           update: true
+#           packages:
+#           - cmake
+#           - libcunit1-dev
+#       script:
+#         - cd ./examples/c
+#         - cmake test
+#         - make
+#         - ./unit-test
+#     - stage: build
+#       addons:
+#         apt:
+#           update: true
+#           packages:
+#           - cmake
+#           - build-essential
+#       script:
+#         - cd ./examples/c
+#         - cmake src
+#         - make
