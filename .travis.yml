@@ -6,6 +6,7 @@ jobs:
     - stage: build
       script: docker build docker/ -t benchmarks && docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
 
+
     # - stage: run
     #   script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
 
