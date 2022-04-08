@@ -6,7 +6,7 @@ jobs:
       - checkout
       - run: cat /etc/*-release
       - run: docker build docker/ -t benchmarks
-      # - run: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+      - run: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
 
 workflows:
   build-and-test-workflow:

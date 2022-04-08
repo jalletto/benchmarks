@@ -4,9 +4,10 @@ services:
 jobs:
   include:
     - stage: build
-      script: docker build docker/ -t benchmarks
-    - stage: run
-      script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+      script: docker build docker/ -t benchmarks && docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+
+    # - stage: run
+    #   script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
 
 
 
@@ -21,8 +22,7 @@ jobs:
 #     - stage: test
 #       addons:
 #         apt:
-#           update: true
-#           packages:
+#           update: true 
 #           - cmake
 #           - libcunit1-dev
 #       script:
