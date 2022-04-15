@@ -13,7 +13,7 @@ jobs:
   run:
     machine: true
     steps:
-      - run: docker run -it --rm -v $DOCKER_USERNAME/benchmarks brainfuck bench
+      - run: docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks brainfuck bench
 
 
 workflows:
