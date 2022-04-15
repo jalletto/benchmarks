@@ -17,6 +17,9 @@ jobs:
 
 
 workflows:
-  build-and-test-workflow:
+  build-and-run-workflow:
     jobs:
-      - build-and-run
+      - build
+      - run:
+          requires:
+            - build
