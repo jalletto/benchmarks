@@ -6,7 +6,7 @@ jobs:
       script: 
       - echo $DOCKER_USERNAME
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build ./docker/ -t benchmarks .
+      - docker build -t benchmarks docker/
       - docker images
       - docker tag benchmarks $DOCKER_USERNAME/benchmarks
       - docker push $DOCKER_USERNAME/benchmarks
