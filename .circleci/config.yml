@@ -1,12 +1,20 @@
 version: 2.1
 jobs:
-  build-and-run:
+  build:
     machine: true
     steps:
       - checkout
       - run: cat /etc/*-release
+      - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - run: docker build docker/ -t benchmarks
+      - run: docker tag benchmarks $DOCKER_USERNAME/benchmarks
+      - run: docker push $DOCKER_USERNAME/benchmarks
       # - run: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+  run:
+    machine: true
+    steps:
+      - run: docker run -it --rm -v $DOCKER_USERNAME/benchmarks brainfuck bench
+
 
 workflows:
   build-and-test-workflow:
