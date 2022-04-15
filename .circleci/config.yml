@@ -5,7 +5,7 @@ jobs:
     steps:
       - checkout
       - run: cat /etc/*-release
-      - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - run: echo "$yo" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - run: docker build docker/ -t benchmarks
       - run: docker tag benchmarks $DOCKER_USERNAME/benchmarks
       - run: docker push $DOCKER_USERNAME/benchmarks
