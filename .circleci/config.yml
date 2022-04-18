@@ -22,7 +22,7 @@ jobs:
 workflows:
   build-and-run-workflow:
     jobs:
-      - run
-      # - run:
-      #     # requires:
-      #     #   - build
+      - build
+      - run:
+          # requires:
+          #   - build
