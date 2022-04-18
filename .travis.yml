@@ -1,59 +1,59 @@
-services:
-  - docker
-jobs:
-  include:
-    - stage: build
-      script: 
-      - echo $DOCKER_USERNAME
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t benchmarks docker/
-      - docker images
-      - docker tag benchmarks $DOCKER_USERNAME/benchmarks
-      - docker push $DOCKER_USERNAME/benchmarks
-      
-    - stage: run
-      script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks brainfuck bench
-
-
+# services:
+#   - docker
 # jobs:
 #   include:
 #     - stage: build
 #       script: 
-#       - docker build docker/ -t benchmarks && docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
-#       - 
+#       - echo $DOCKER_USERNAME
+#       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#       - docker build -t benchmarks docker/
+#       - docker images
+#       - docker tag benchmarks $DOCKER_USERNAME/benchmarks
+#       - docker push $DOCKER_USERNAME/benchmarks
       
 #     - stage: run
-#       script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+#       script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks brainfuck bench
+
+
+# # jobs:
+# #   include:
+# #     - stage: build
+# #       script: 
+# #       - docker build docker/ -t benchmarks && docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+# #       - 
+      
+# #     - stage: run
+# #       script: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
 
 
 
 
-# language: c
+# # language: c
 
-# compiler:
-#   - gcc
+# # compiler:
+# #   - gcc
 
-# jobs:
-#   include:
-#     - stage: test
-#       addons:
-#         apt:
-#           update: true 
-#           - cmake
-#           - libcunit1-dev
-#       script:
-#         - cd ./examples/c
-#         - cmake test
-#         - make
-#         - ./unit-test
-#     - stage: build
-#       addons:
-#         apt:
-#           update: true
-#           packages:
-#           - cmake
-#           - build-essential
-#       script:
-#         - cd ./examples/c
-#         - cmake src
-#         - make
+# # jobs:
+# #   include:
+# #     - stage: test
+# #       addons:
+# #         apt:
+# #           update: true 
+# #           - cmake
+# #           - libcunit1-dev
+# #       script:
+# #         - cd ./examples/c
+# #         - cmake test
+# #         - make
+# #         - ./unit-test
+# #     - stage: build
+# #       addons:
+# #         apt:
+# #           update: true
+# #           packages:
+# #           - cmake
+# #           - build-essential
+# #       script:
+# #         - cd ./examples/c
+# #         - cmake src
+# #         - make
