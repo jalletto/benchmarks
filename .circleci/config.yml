@@ -18,6 +18,7 @@ jobs:
       - run : ls
       - run: docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks brainfuck bench
 
+
 workflows:
   build-and-run-workflow:
     jobs:
