@@ -12,7 +12,7 @@ jobs:
       - docker push $DOCKER_USERNAME/benchmarks
       
     - stage: run
-      script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks brainfuck bench
+      script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
 
 
 
