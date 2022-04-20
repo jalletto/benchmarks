@@ -32,4 +32,3 @@ run:
   - pwd
   - ls
   - docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
-
