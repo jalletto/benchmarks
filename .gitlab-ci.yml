@@ -11,8 +11,8 @@ before_script:
   - sudo /etc/init.d/docker start
 
 stages:
-  - build
-  - run
+  - build-job
+  - run-job
 
 build-job:
   stage: build
