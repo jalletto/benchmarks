@@ -11,10 +11,10 @@ before_script:
   - sudo /etc/init.d/docker start
 
 stages:
-  - build-job
-  - run-job
+  - build
+  - run
 
-build-job:
+build:
   stage: build
   script:
   - cat /etc/*-release
@@ -24,7 +24,7 @@ build-job:
   - docker push $DOCKER_USERNAME/benchmarks
 
 
-run-job:
+run:
   stage: run
   script:
   - pwd
