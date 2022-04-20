@@ -1,0 +1,26 @@
+---
+image: ubuntu:latest
+before_script:
+  - cat /proc/cpuinfo
+  - cat /etc/os-release
+
+stages:
+  - build
+  - run
+
+build-job:
+  stage: build
+  script:
+  - cat /etc/*-release
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build docker/ -t benchmarks
+  - docker tag benchmarks $DOCKER_USERNAME/benchmarks
+  - docker push $DOCKER_USERNAME/benchmarks
+
+
+run-job:
+  stage: run
+  script:
+  - pwd
+  - ls
+  - docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
