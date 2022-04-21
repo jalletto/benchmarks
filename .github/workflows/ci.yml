@@ -16,6 +16,7 @@ jobs:
       - run: docker build docker/ -t benchmarks
       - run: docker tag benchmarks ${{ secrets.DOCKER_USERNAME }}/benchmarks
       - run: docker push ${{ secrets.DOCKER_USERNAME }}/benchmarks
+      
   run:
     # needs: build
     runs-on: ubuntu-18.04
