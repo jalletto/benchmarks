@@ -22,6 +22,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: pwd
-      - run: docker run -v "$(pwd)":/src $DOCKER_USERNAME/benchmarks base64 bench
+      - run: docker run -t --rm -v  $(pwd):/src ${{ secrets.DOCKER_USERNAME }}/benchmarks base64 bench
 
 
