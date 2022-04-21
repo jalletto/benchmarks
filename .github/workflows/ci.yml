@@ -21,6 +21,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker run -i --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+      - run: docker run -t --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
 
 
