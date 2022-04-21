@@ -17,9 +17,10 @@ jobs:
       - run: docker tag benchmarks ${{ secrets.DOCKER_USERNAME }}/benchmarks
       - run: docker push ${{ secrets.DOCKER_USERNAME }}/benchmarks
   run:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker run -i --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+      - run: docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
 
 
