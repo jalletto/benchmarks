@@ -21,6 +21,7 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
+      - run: pwd
       - run: docker run --rm -v "$(pwd):/src" $DOCKER_USERNAME/benchmarks base64 bench
 
 
