@@ -18,7 +18,7 @@ jobs:
   #     - run: docker push ${{ secrets.DOCKER_USERNAME }}/benchmarks
   run:
     # needs: build
-    runs-on: ubuntu:14.04
+    runs-on: ubuntu-14.04
     steps:
       - uses: actions/checkout@v2
       - run: docker run -t --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
