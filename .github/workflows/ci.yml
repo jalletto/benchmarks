@@ -25,4 +25,3 @@ jobs:
       - run: pwd
       - run: docker run -t --rm -v  $(pwd):/src ${{ secrets.DOCKER_USERNAME }}/benchmarks base64 bench
 
-
