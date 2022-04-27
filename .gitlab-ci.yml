@@ -1,4 +1,4 @@
----
+
 image: ubuntu:latest
 before_script:
   - cat /proc/cpuinfo
