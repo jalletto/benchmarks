@@ -15,12 +15,7 @@ services:
 #   - sudo apt install docker-ce -y
 #   - sudo /etc/init.d/docker start
 
-stages:
-  - build
-  - run
-
 build:
-  stage: build
   script:
   - cat /etc/*-release
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
@@ -30,7 +25,6 @@ build:
 
 
 run:
-  stage: run
   script:
   - pwd
   - ls
