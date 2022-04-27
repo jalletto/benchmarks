@@ -1,5 +1,8 @@
 
-image: ubuntu:latest
+image: docker:latest
+services:
+  - docker:dind
+
 before_script:
   - cat /proc/cpuinfo
   - cat /etc/os-release
