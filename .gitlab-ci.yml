@@ -28,4 +28,4 @@ run:
   script:
   - pwd
   - ls
-  - docker run -T --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+  - docker run --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
