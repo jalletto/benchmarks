@@ -15,13 +15,13 @@ services:
 #   - sudo apt install docker-ce -y
 #   - sudo /etc/init.d/docker start
 
-build:
-  script:
-  - cat /etc/*-release
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker build docker/ -t benchmarks
-  - docker tag benchmarks $DOCKER_USERNAME/benchmarks
-  - docker push $DOCKER_USERNAME/benchmarks
+# build:
+#   script:
+#   - cat /etc/*-release
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+#   - docker build docker/ -t benchmarks
+#   - docker tag benchmarks $DOCKER_USERNAME/benchmarks
+#   - docker push $DOCKER_USERNAME/benchmarks
 
 
 run:
