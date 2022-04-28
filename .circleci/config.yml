@@ -4,6 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: df -h /
       - run: cat /etc/*-release
       - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - run: docker build docker/ -t benchmarks
@@ -14,6 +15,7 @@ jobs:
     machine: true
     steps:
       - checkout
+      - run: df -h /
       - run: pwd
       - run : ls
       - run: docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
