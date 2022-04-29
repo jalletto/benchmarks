@@ -29,8 +29,7 @@ run:
   - df -h /
   - pwd
   - ls
-  - docker run --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+  # - docker run --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
   - df -h /
-  - list cpu
   - less /proc/cpuinfo
 
