@@ -5,15 +5,17 @@ jobs:
     - stage: build
       script:
       - df -h /
-      - echo $DOCKER_USERNAME
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t benchmarks docker/
-      - docker images
-      - docker tag benchmarks $DOCKER_USERNAME/benchmarks
-      - docker push $DOCKER_USERNAME/benchmarks
+      - list cpu
+      - less /proc/cpuinfo
+    #   - echo $DOCKER_USERNAME
+    #   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    #   - docker build -t benchmarks docker/
+    #   - docker images
+    #   - docker tag benchmarks $DOCKER_USERNAME/benchmarks
+    #   - docker push $DOCKER_USERNAME/benchmarks
       
-    - stage: run
-      script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+    # - stage: run
+    #   script: pwd && ls && docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
 
 
 
