@@ -5,6 +5,8 @@ jobs:
     steps:
       - checkout
       - run: df -h /
+      - run: list cpu
+      - run: less /proc/cpuinfo
       - run: cat /etc/*-release
       - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - run: docker build docker/ -t benchmarks
