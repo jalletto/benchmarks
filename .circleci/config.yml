@@ -4,7 +4,7 @@ jobs:
     machine: true
     steps:
       - checkout
-      - run: df -h /
+      - run: df -h
       - run: less /proc/cpuinfo
       - run: cat /etc/*-release
       - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

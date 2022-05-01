@@ -4,7 +4,7 @@ jobs:
   include:
     - stage: build
       script:
-      - df -h /
+      - df -h
       - less /proc/cpuinfo
       - echo $DOCKER_USERNAME
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin

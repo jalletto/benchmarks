@@ -26,7 +26,7 @@ services:
 
 run:
   script:
-  - df -h /
+  - df -h
   - pwd
   - ls
   # - docker run --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
