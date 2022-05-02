@@ -12,12 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: df -h
-      - run: less /proc/cpuinfo
-      - run: cat /etc/*-release
-      # - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      # - run: docker build docker/ -t benchmarks
-      # - run: docker tag benchmarks ${{ secrets.DOCKER_USERNAME }}/benchmarks
-      # - run: docker push ${{ secrets.DOCKER_USERNAME }}/benchmarks
+      - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+      - run: docker build docker/ -t benchmarks
+      - run: docker tag benchmarks ${{ secrets.DOCKER_USERNAME }}/benchmarks
+      - run: docker push ${{ secrets.DOCKER_USERNAME }}/benchmarks
 
   run:
     needs: build
@@ -25,5 +23,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: pwd
-      # - run: docker run -t --rm -v  $(pwd):/src ${{ secrets.DOCKER_USERNAME }}/benchmarks base64 bench
+      - run: docker run -t --rm -v  $(pwd):/src ${{ secrets.DOCKER_USERNAME }}/benchmarks base64 bench
 
