@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  build:
+    machine: true
+    steps:
+      - checkout
+      - run: df -h
+      - run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - run: docker build docker/ -t benchmarks
+      - run: docker tag benchmarks $DOCKER_USERNAME/benchmarks
+      - run: docker push $DOCKER_USERNAME/benchmarks
+      - run: docker run -it --rm -v $(pwd):/src benchmarks brainfuck bench
+  run:
+    machine: true
+    steps:
+      - checkout
+      - run: df -h /
+      - run: docker run -it --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
+
+workflows:
+  build-and-run-workflow:
+    jobs:
+      - build
+      - run:
+          requires:
+            - build

@@ -1,3 +1,14 @@
+# About This Fork
+
+This fork includes the following CI configs files:
+
+- `.github/workflows/ci.yml`
+- `.circleci/config.yml`
+- `.travis.yml`
+- `.gitlab-ci.yml`
+
+It was used to test these CI services. Results are published at earthly.dev/blog/ci-comparison/
+
 <!-- md-toc-begin -->
 # Table of Content
 * [Overview](#overview)

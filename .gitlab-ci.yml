@@ -1,0 +1,14 @@
+image: docker:latest
+services:
+  - docker:dind
+
+build:
+  script:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker build docker/ -t benchmarks
+  - docker tag benchmarks $DOCKER_USERNAME/benchmarks
+  - docker push $DOCKER_USERNAME/benchmarks
+
+run:
+  script:
+  - docker run --rm -v $(pwd):/src $DOCKER_USERNAME/benchmarks base64 bench
