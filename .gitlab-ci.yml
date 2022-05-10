@@ -1,19 +1,6 @@
-
 image: docker:latest
 services:
   - docker:dind
-
-# before_script:
-#   - cat /proc/cpuinfo
-#   - cat /etc/os-release
-#   - apk update
-#   - apk add sudo -y
-#   - sudo apk add apk-transport-https ca-certificates curl software-properties-common -y
-#   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-#   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
-#   - apt-cache policy docker-ce
-#   - sudo apt install docker-ce -y
-#   - sudo /etc/init.d/docker start
 
 build:
   script:
@@ -21,7 +8,6 @@ build:
   - docker build docker/ -t benchmarks
   - docker tag benchmarks $DOCKER_USERNAME/benchmarks
   - docker push $DOCKER_USERNAME/benchmarks
-
 
 run:
   script:
